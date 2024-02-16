@@ -77,8 +77,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Copy analyzer folder to output directory
         run: cp -r ./analyzer ./out/_analyze
-      - name: Touch .nojekyll
-        run: touch ./out/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
