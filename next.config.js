@@ -5,6 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/nextjs-mantine-bundle-analyzer',
   reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
