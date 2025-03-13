@@ -1,20 +1,20 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: false,
-})
+import bundleAnalyzer from '@next/bundle-analyzer';
+import { NextConfig } from 'next';
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: true,
+  openAnalyzer: false
+});
 
 // Create basePath for GitHub pages
 const basePath = process.env.NODE_ENV !== 'development' ? '/nextjs-mantine-bundle-analyzer' : '';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   output: 'export',
   basePath,
-  reactStrictMode: false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
+    reactCompiler: true,
   },
 }
 

@@ -4,24 +4,12 @@ import Link from "next/link";
 
 const dataSource = [
   {
-    env: "Dev",
     side: "nodejs (server)",
-    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/_analyze/dev/nodejs.html",
+    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/nodejs.html",
   },
   {
-    env: "Dev",
     side: "client (browser)",
-    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/_analyze/dev/client.html",
-  },
-  {
-    env: "Build",
-    side: "nodejs (server)",
-    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/_analyze/prod/nodejs.html",
-  },
-  {
-    env: "Build",
-    side: "client (browser)",
-    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/_analyze/prod/client.html",
+    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/client.html",
   },
 ];
 
@@ -35,7 +23,6 @@ export default function Home() {
       <table border={1} cellPadding={6} cellSpacing={0}>
         <thead>
           <tr>
-            <th>Environment</th>
             <th>Side</th>
             <th>Link</th>
           </tr>
@@ -43,7 +30,6 @@ export default function Home() {
         <tbody>
           {dataSource.map((item, index) => (
             <tr key={index}>
-              <td>{item.env}</td>
               <td>{item.side}</td>
               <td>
                 <Link
