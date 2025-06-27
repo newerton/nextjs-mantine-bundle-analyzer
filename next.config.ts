@@ -3,7 +3,8 @@ import { NextConfig } from 'next';
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: true,
-  openAnalyzer: false
+  openAnalyzer: false,
+  analyzerMode: 'static',
 });
 
 // Create basePath for GitHub pages

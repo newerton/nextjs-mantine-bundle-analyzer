@@ -9,20 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mantine/core": "^7.17.1",
-    "@mantine/hooks": "^7.17.1",
-    "@next/bundle-analyzer": "^15.2.2",
-    "babel-plugin-react-compiler": "^19.0.0-beta-bafa41b-20250307",
-    "next": "^15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@mantine/core": "^8.1.2",
+    "@mantine/hooks": "^8.1.2",
+    "@next/bundle-analyzer": "^15.3.4",
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
+    "next": "^15.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9.22.0",
-    "eslint-config-next": "^15.2.2",
-    "typescript": "^5.8.2"
+    "@types/node": "^24.0.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "^15.3.4",
+    "typescript": "^5.8.3"
   }
 }
