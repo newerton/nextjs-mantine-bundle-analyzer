@@ -1,22 +1,22 @@
-import { Button } from "@mantine/core";
-import Link from "next/link";
+import { Button } from '@mantine/core';
+import Link from 'next/link';
 
 const dataSource = [
   {
-    side: "nodejs (server)",
-    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/nodejs.html",
+    side: 'nodejs (server)',
+    link: 'https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/nodejs.html',
   },
   {
-    side: "client (browser)",
-    link: "https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/client.html",
+    side: 'client (browser)',
+    link: 'https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/client.html',
   },
 ];
 
 export default function Home() {
   return (
     <div>
-      <div style={{ marginBottom: "20px" }}>
-        <Button variant="filled">Button</Button>
+      <div style={{ marginBottom: '20px' }}>
+        <Button>Button</Button>
       </div>
 
       <table border={1} cellPadding={6} cellSpacing={0}>
@@ -28,7 +28,7 @@ export default function Home() {
         </thead>
         <tbody>
           {dataSource.map((item, index) => (
-            <tr key={index}>
+            <tr key={index.toString()}>
               <td>{item.side}</td>
               <td>
                 <Link
