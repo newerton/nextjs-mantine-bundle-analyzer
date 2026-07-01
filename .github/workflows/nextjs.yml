@@ -74,10 +74,20 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
         env:
           ANALYZE: true
-      - name: Copy analyzer folder to output directory (if exists)
+      - name: Copy analyzer folder to output directory
         run: |
+          echo "=== .next/ contents ==="
+          ls -la .next/
           if [ -d ".next/analyze" ]; then
-            cp -r .next/analyze/ out/analyze/
+            echo "=== analyze/ contents ==="
+            ls -la .next/analyze/
+            echo "=== copying ==="
+            mkdir -p out/analyze/
+            cp -r .next/analyze/. out/analyze/
+            echo "=== out/analyze/ contents ==="
+            ls -la out/analyze/
+          else
+            echo "Analyze directory NOT found"
           fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
