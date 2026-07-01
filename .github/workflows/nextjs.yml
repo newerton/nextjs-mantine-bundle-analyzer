@@ -57,12 +57,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v6
         with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
-          generator_config_file: next.config.ts
+      - name: Set PAGES_BASE_PATH
+        run: echo "PAGES_BASE_PATH=${{ steps.pages.outputs.base_path }}" >> $GITHUB_ENV
       - name: Restore cache
         uses: actions/cache@v6
         with:
