@@ -74,6 +74,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
         env:
           ANALYZE: true
+          TURBOPACK: ''
       - name: Copy analyzer folder to output directory
         run: |
           echo "=== .next/ contents ==="
