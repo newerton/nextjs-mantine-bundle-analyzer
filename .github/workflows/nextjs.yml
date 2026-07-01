@@ -51,46 +51,36 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
-      - name: Set PAGES_BASE_PATH
-        run: echo "PAGES_BASE_PATH=${{ steps.pages.outputs.base_path }}" >> $GITHUB_ENV
+        with:
+          # Automatically inject basePath in your Next.js configuration file and disable
+          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
+          #
+          # You may remove this line if you want to manage the configuration yourself.
+          static_site_generator: next
+          generator_config_file: next.config.ts
       - name: Restore cache
         uses: actions/cache@v6
         with:
           path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+            .next/cache
+          # Generate a new cache whenever packages or source files change.
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
-        env:
-          ANALYZE: 'true'
+        run: ANALYZE=true ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
       - name: Copy analyzer folder to output directory
-        run: |
-          echo "=== .next/ contents ==="
-          ls -la
-          ls -la .next/
-          if [ -d ".next/analyze" ]; then
-            echo "=== analyze/ contents ==="
-            ls -la .next/analyze/
-            echo "=== copying ==="
-            mkdir -p out/analyze/
-            cp -r .next/analyze/. out/analyze/
-            echo "=== out/analyze/ contents ==="
-            ls -la out/analyze/
-          else
-            echo "Analyze directory NOT found"
-          fi
+        run: cp -r .next/analyze/ out/analyze/
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v6
         with:
           path: ./out
 
