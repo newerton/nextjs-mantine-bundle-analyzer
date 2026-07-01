@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 const dataSource = [
   {
-    side: 'nodejs (server)',
+    side: 'server',
     link: 'https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/nodejs.html',
   },
   {
-    side: 'client (browser)',
+    side: 'client',
     link: 'https://newerton.github.io/nextjs-mantine-bundle-analyzer/analyze/client.html',
   },
 ];
