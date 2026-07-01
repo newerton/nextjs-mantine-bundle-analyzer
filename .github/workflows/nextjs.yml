@@ -74,8 +74,11 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ANALYZE=true ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
-      - name: Copy analyzer folder to output directory
-        run: cp -r .next/analyze/ out/analyze/
+      - name: Copy analyzer folder to output directory (if exists)
+        run: |
+          if [ -d ".next/analyze" ]; then
+            cp -r .next/analyze/ out/analyze/
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
