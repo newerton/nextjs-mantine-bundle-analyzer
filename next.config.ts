@@ -3,7 +3,6 @@ import type { NextConfig } from 'next';
 
 const withBundleAnalyzer = withBundleAnalyzerInit({
   enabled: process.env.ANALYZE === 'true',
-  openAnalyzer: false,
 });
 
 const nextConfig: NextConfig = {
