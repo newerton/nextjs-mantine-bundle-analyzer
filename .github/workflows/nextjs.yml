@@ -73,7 +73,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
         env:
-          ANALYZE: true
+          ANALYZE: 'true'
       - name: Copy analyzer folder to output directory
         run: |
           echo "=== .next/ contents ==="

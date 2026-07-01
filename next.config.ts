@@ -1,4 +1,10 @@
+import withBundleAnalyzerInit from '@next/bundle-analyzer';
 import type { NextConfig } from 'next';
+
+const withBundleAnalyzer = withBundleAnalyzerInit({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: false,
+});
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -11,22 +17,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
   turbopack: {},
-  webpack(config, options) {
-    if (process.env.ANALYZE === 'true') {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-      const extension = '.html';
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          openAnalyzer: false,
-          reportFilename: !options.nextRuntime
-            ? `./analyze/client${extension}`
-            : `../${options.nextRuntime === 'nodejs' ? '../' : ''}analyze/${options.nextRuntime}${extension}`,
-        }),
-      );
-    }
-    return config;
-  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
