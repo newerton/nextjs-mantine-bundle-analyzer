@@ -78,6 +78,7 @@ jobs:
       - name: Copy analyzer folder to output directory
         run: |
           echo "=== .next/ contents ==="
+          ls -la
           ls -la .next/
           if [ -d ".next/analyze" ]; then
             echo "=== analyze/ contents ==="
