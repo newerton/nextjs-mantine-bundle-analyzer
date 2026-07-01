@@ -56,8 +56,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
-        with:
-          static_site_generator: next
       - name: Set PAGES_BASE_PATH
         run: echo "PAGES_BASE_PATH=${{ steps.pages.outputs.base_path }}" >> $GITHUB_ENV
       - name: Restore cache
