@@ -70,6 +70,8 @@ jobs:
             ${{ runner.os }}-nextjs-webpack-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: Debug next.config.ts
+        run: cat next.config.ts
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build --webpack
         env:
