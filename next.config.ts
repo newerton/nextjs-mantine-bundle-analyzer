@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
   assetPrefix: process.env.PAGES_BASE_PATH
     ? `${process.env.PAGES_BASE_PATH}/`
     : undefined,
-  webpack: (config) => config,
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },

@@ -82,7 +82,7 @@ jobs:
             cp -r .next/analyze/ out/analyze/
           fi
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
 
