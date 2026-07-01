@@ -80,7 +80,7 @@ jobs:
       - name: Copy analyzer folder to output directory
         run: cp -r .next/analyze/ out/analyze/
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v6
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
 
